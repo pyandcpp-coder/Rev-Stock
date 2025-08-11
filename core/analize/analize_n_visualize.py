@@ -14,6 +14,15 @@ def plot_price(df, ticker):
     fig.update_layout(title=f'{ticker} S Price Analysis', xaxis_title='Date', yaxis_title='Price (USD)',template='plotly_dark')
     
     fig.show()
+    # Save plot as PNG image (requires kaleido)
+    try:
+        fig.write_image(f"{ticker}_price_plot.png")
+        print(f"Plot saved as {ticker}_price_plot.png")
+    except Exception as e:
+        print(f"Could not save image: {e}")
+    # Save plot as HTML file
+    fig.write_html(f"{ticker}_price_plot.html")
+    print(f"Plot saved as {ticker}_price_plot.html")
     
 if __name__ == '__main__':
     ticker = 'AAPL'
@@ -21,12 +30,12 @@ if __name__ == '__main__':
         df = pd.read_csv(f'{ticker}_data.csv',index_col='Date', parse_dates=True)
         print(df.head())
         print("Successfully loaded data")
-        
     except FileNotFoundError:
         print(f'{ticker} data not found')
         
     except Exception as e:
         print(e)    
+    plot_price(df, ticker)
     
         
     

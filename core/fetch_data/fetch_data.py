@@ -3,9 +3,10 @@ import numpy as np
 import yfinance as yf
 import matplotlib.pyplot as plt
 import plotly as pl   
-def get_data(ticker,start_date,end_data):
-    data = yf.download(ticker,start_date,end_data)
-    print(f"Data for {ticker} from {start_date} to {end_data}")
+def get_data(ticker,start_date,end_date):
+    data = yf.download(ticker,start_date,end_date)
+    data = data.reset_index()
+    print(f"Data for {ticker} from {start_date} to {end_date}")
     return data
 
 if __name__ == "__main__":
@@ -17,13 +18,7 @@ if __name__ == "__main__":
     
     print("Data for AAPL from 2023-01-01 to 2023-12-31")
     print(data.head())
-    
-    print("Tail of the data is ")
-    print(data.tail())
-    
-    print("Shape of the data is ")
-    print(data.shape)
-    data.to_csv(f"{ticker}_data.csv")
+    data.to_csv(f"{ticker}_data.csv", index=False)
     print(f"Data saved to {ticker}_data.csv")
     
     
