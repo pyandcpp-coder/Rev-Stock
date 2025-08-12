@@ -8,7 +8,7 @@ engine= create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
 Base = declarative_base()
 
-Base = declarative_base()
+# Base = declarative_base()
 
 class StockPrice(Base):
     __tablename__ = 'stock_prices'
@@ -25,6 +25,12 @@ class StockPrice(Base):
     volume = Column(Integer)
     __table_args__ = (UniqueConstraint('ticker', 'date', name='_ticker_date_uc'),)
 
+class User(Base):
+    __tablename__ ='users'
+    id = Column(Integer,primary_key=True,index=True)
+    email= Column(String,unique=True,index=True,nullable=False)
+    hashed_password= Column(String,nullable=False)
+    
 
 # A function to be called from our CLI to create the table
 def init_db():
