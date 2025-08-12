@@ -6,4 +6,6 @@ numpy
 kaleido
 scikit-learn
 xgboost
-fastapi[all]
+"fastapi[all]"
+"sqlalchemy[psycopg2-binary]"
+psycopg2
