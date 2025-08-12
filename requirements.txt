@@ -3,3 +3,7 @@ pandas
 matplotlib
 plotly
 numpy
+kaleido
+scikit-learn
+xgboost
+fastapi[all]
