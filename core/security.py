@@ -3,17 +3,16 @@ from typing import Optional
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-# --- Configuration ---
-# You MUST change this to a long, random string in a real application.
-# You can generate one using: openssl rand -hex 32
+
+
+#  openssl rand -hex 32
+
 SECRET_KEY = "4b05b9dcf50feac61d3a512b42ec345d5120243fd7af812d6dcc1366d5b00ce4"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-# --- Functions ---
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 

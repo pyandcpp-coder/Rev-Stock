@@ -7,6 +7,7 @@ from typing import Dict,List,Optional
 import logging
 import pandas as pd
 import numpy as np
+from api.routers import users
 
 ## setting up the logger
 
@@ -39,7 +40,7 @@ class AnalysisResult(BaseModel):
 
 app = FastAPI(titile="Stock Analysis & Prediction API",
               description='api to run analysis and retrun data for charting')
-
+app.include_router(users.router)
 @app.post("/analyze/{ticker}",response_model=AnalysisResult)
 def analyze_stock(ticker:str,start_date:str="2023-01-01",end_date:str="2024-12-31"):
     """Runs the full analysis pipeline and returns the resutls and time series data"""
