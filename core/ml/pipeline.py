@@ -82,6 +82,17 @@ class MLPipeline:
         print("Final model trained.")
         return self.final_model
     
+    def train_and_predict_latest(self,model_name= 'Random Forest'):
+        if not self.X.empty:
+            model = self.models[model_name]
+            X_scaled = self.scaler.fit_transform(self.X)
+            model.fit(X_scaled,self.y_price)
+            #predicting on tthe last row of the feature
+            last_features_scaled = self.scaler.transform(self.X.tail(1))
+            prediction = model.predict(last_features_scaled)
+            return prediction[0]
+        return 0
+    
     def save_model(self, path='trained_models/model.pkl'):
         if self.final_model:
             # Ensure the directory exists

@@ -9,4 +9,20 @@ xgboost
 "fastapi[all]"
 "sqlalchemy[psycopg2-binary]"
 psycopg2
-"passlib[bcrypt]" python-jose
+"passlib[bcrypt]" 
+python-jose
+python-multipart 
+pymupdf 
+google-genai 
+PyMuPDF 
+python-dotenv
+uvicorn 
+langchain 
+langchain-community 
+chromadb 
+sentence-transformers 
+google-generativeai 
+PyPDF2
+newspaper3k 
+yt-dlp
+'lxml[html_clean]'

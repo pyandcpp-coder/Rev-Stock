@@ -5,3 +5,4 @@ api/__pycache__/
 core/__pycache__/
 frontend/
 trained_models/
+.env
